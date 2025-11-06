@@ -29,7 +29,7 @@
 - GitHub Actions was used to deploy the web.
 
 ### Front-end:
-- ReactJS with a [customized CRA template](https://github.com/pieroguerrero/cra-template).
+- ReactJS with custom Create React App configuration.
 - Routing with [react-router v6](https://reactrouter.com/en/main).
 - Internal application state managed with [Redux](https://react-redux.js.org/).
 - CSS design with [Tailwind CSS](https://tailwindcss.com/). 
@@ -73,7 +73,7 @@ By clicking on the Feature name you will be redirected to the corresponsing User
 ## Setup
 Clone this project by doing:
 ```
-$ git clone https://github.com/pieroguerrero/linkedin.git
+$ git clone https://github.com/Pushkar111/linkedin-clone.git
 ```
 Then go to the folder you cloned the code and execute:
 ```
