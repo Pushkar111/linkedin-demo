@@ -3,6 +3,9 @@
  * @description Adapters to transform REST API responses to match frontend data models
  */
 
+// API Base URL from environment variable
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+
 /**
  * Transform API user response to frontend User model
  * @param {Object} apiUser - User object from API
@@ -226,7 +229,7 @@ export const commentReactionAPI = {
   async toggleReaction(postId, commentId, reactionType = "like") {
     const token = localStorage.getItem("token");
     const response = await fetch(
-      `http://localhost:5000/api/posts/${postId}/comments/${commentId}/reactions`,
+      `${API_BASE_URL}/posts/${postId}/comments/${commentId}/reactions`,
       {
         method: "POST",
         headers: {
@@ -262,9 +265,9 @@ export const commentReactionAPI = {
     }
 
     const response = await fetch(
-      `http://localhost:5000/api/posts/${postId}/comments/${commentId}/reactions`,
+      `${API_BASE_URL}/posts/${postId}/comments/${commentId}/reactions`,
       {
-        method: "GET",
+        method: "DELETE",
         headers,
       }
     );
@@ -293,7 +296,7 @@ export const commentReactionAPI = {
     }
 
     const response = await fetch(
-      `http://localhost:5000/api/posts/${postId}/comments/${commentId}/reactions/users?${queryParams}`,
+      `${API_BASE_URL}/posts/${postId}/comments/${commentId}/reactions/users?${queryParams}`,
       {
         method: "GET",
         headers: {

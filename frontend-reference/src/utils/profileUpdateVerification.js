@@ -13,6 +13,9 @@
  * 4. Call verification functions
  */
 
+// API Base URL from environment variable
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+
 // ============================================================================
 // TEST 1: Check UserContext is available
 // ============================================================================
@@ -145,7 +148,7 @@ export async function testAPIResponse(userId) {
       return false;
     }
     
-    const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
+    const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
