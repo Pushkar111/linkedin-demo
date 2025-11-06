@@ -131,12 +131,12 @@ export default function RightSidebar({ profile }) {
             Public profile & URL
           </label>
           <a
-            href={`/profile/${profile._id}`}
+            href={`/linkedin/profile/${profile._id}`}
             className="text-sm text-color-button-blue hover:underline focus:outline-none focus:ring-2 focus:ring-color-button-blue rounded px-1 break-all"
             target="_blank"
             rel="noopener noreferrer"
           >
-            linkedin-clone.com/in/{profile._id}
+            https://appdost-linkedin-client.vercel.app/linkedin/profile/{profile._id}
           </a>
         </div>
       </motion.div>
