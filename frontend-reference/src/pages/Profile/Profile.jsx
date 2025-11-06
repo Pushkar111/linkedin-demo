@@ -9,6 +9,9 @@ import UserPostCard from "./components/UserPostCard";
 import ProfileSkeleton from "./components/ProfileSkeleton";
 import "./Profile.css";
 
+// API Base URL from environment variable
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+
 export default function Profile() {
   const { userId } = useParams();
   const navigate = useNavigate();
@@ -90,7 +93,7 @@ export default function Profile() {
         setLoading(true);
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `http://localhost:5000/api/users/${userId}`,
+          `${API_BASE_URL}/users/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -117,8 +120,8 @@ export default function Profile() {
       try {
         setLoadingPosts(true);
         const token = localStorage.getItem("token");
-        const response = await fetch(
-          `http://localhost:5000/api/posts/user/${userId}`,
+        const postsResponse = await fetch(
+          `${API_BASE_URL}/posts/user/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -126,11 +129,11 @@ export default function Profile() {
           }
         );
 
-        if (!response.ok) {
+        if (!postsResponse.ok) {
           throw new Error("Failed to fetch user posts");
         }
 
-        const data = await response.json();
+        const data = await postsResponse.json();
         console.log("Posts API Response:", data);
         // API returns { success: true, posts: [...] }
         setUserPosts(data.posts || data);

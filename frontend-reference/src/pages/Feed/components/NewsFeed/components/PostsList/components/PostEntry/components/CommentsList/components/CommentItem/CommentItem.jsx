@@ -11,6 +11,9 @@ import { formatReactionCounts } from "../../../../../../../../../../../../consta
 import { connectionAPI } from "../../../../../../../../../../../../services";
 import "./CommentItem.css";
 
+// API Base URL from environment variable
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+
 /**
  * @param {Object} props
  * @param {Object} props.comment - Comment object
@@ -101,7 +104,7 @@ export default function CommentItem({ comment, postId, currentUserId, onDelete, 
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/posts/${postId}/comments/${comment._id}`,
+        `${API_BASE_URL}/posts/${postId}/comments/${comment._id}`,
         {
           method: "PUT",
           headers: {

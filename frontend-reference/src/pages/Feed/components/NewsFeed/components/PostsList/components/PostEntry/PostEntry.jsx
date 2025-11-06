@@ -15,6 +15,10 @@ import { useReaction } from "../../../../../../../../hooks/useReaction";
 import { formatReactionCounts } from "../../../../../../../../constants/reactions";
 import HashtagText from "../../../../../../../../components/HashtagText";
 import { connectionAPI } from "../../../../../../../../services";
+
+// API Base URL from environment variable
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+
 /**
  *
  * @param {Object} props
@@ -128,7 +132,7 @@ export default function PostEntry({
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/posts/${objPost.strPostId}`,
+        `${API_BASE_URL}/posts/${objPost.strPostId}`,
         {
           method: "PUT",
           headers: {
@@ -172,7 +176,7 @@ export default function PostEntry({
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/posts/${objPost.strPostId}`,
+        `${API_BASE_URL}/posts/${objPost.strPostId}`,
         {
           method: "DELETE",
           headers: {
@@ -222,7 +226,7 @@ export default function PostEntry({
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/posts/${objPost.strPostId}/comments/${commentId}`,
+        `${API_BASE_URL}/posts/${objPost.strPostId}/comments/${commentId}`,
         {
           method: "DELETE",
           headers: {

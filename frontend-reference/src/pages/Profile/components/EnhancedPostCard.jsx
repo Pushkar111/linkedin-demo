@@ -29,6 +29,9 @@ import { ReactionButton, ReactionPicker, DeleteModal } from "../../../components
 import HashtagText from "../../../components/HashtagText/HashtagText";
 import CommentsList from "../../Feed/components/NewsFeed/components/PostsList/components/PostEntry/components/CommentsList/CommentsList";
 
+// API Base URL from environment variable
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+
 export default function EnhancedPostCard({ post, index, onPostDeleted }) {
   const navigate = useNavigate();
   
@@ -195,7 +198,7 @@ export default function EnhancedPostCard({ post, index, onPostDeleted }) {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/posts/${post._id || post.strPostId}`,
+        `${API_BASE_URL}/posts/${post._id || post.strPostId}`,
         {
           method: "PUT",
           headers: {
@@ -236,7 +239,7 @@ export default function EnhancedPostCard({ post, index, onPostDeleted }) {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/posts/${post._id || post.strPostId}`,
+        `${API_BASE_URL}/posts/${post._id || post.strPostId}`,
         {
           method: "DELETE",
           headers: {

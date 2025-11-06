@@ -5,6 +5,9 @@
 import React, { useState } from "react";
 import "./AddComment.css";
 
+// API Base URL from environment variable
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+
 /**
  * @param {Object} props
  * @param {string} props.postId - Post ID
@@ -26,7 +29,7 @@ export default function AddComment({ postId, currentUser, onCommentAdded }) {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}/comments`, {
+      const response = await fetch(`${API_BASE_URL}/posts/${postId}/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
